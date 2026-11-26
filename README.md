@@ -4,7 +4,7 @@
 
 POSIX-OTP is an **Embedded Linux fault-recovery system** designed to restore failed processes in sensor-processing pipelines without unnecessarily terminating and recreating unaffected downstream processes.
 
-The system combines **dependency-aware fault attribution, process supervision, supervisor-retained IPC endpoints, root-confined recovery, post-restart verification, and resource observability** into a single userspace architecture.
+The system combines **dependency-aware fault attribution, process supervision, supervisor-retained IPC endpoints, root-confined recovery, post-restart verification and resource observability** into a single userspace architecture.
 
 ---
 
@@ -350,20 +350,6 @@ The unchanged `FUSION` and `NETWORK` PIDs demonstrate that the downstream proces
 
 ---
 
-## 📈 Future Improvements
-
-Possible future improvements include:
-
-- Expanded fault-injection testing across all pipeline stages.
-- Quantitative recovery-time and resource-overhead measurements.
-- More extensive external-interface failure testing.
-- Improved dependency configuration and validation.
-- Testing with additional Embedded Linux hardware platforms.
-- Extended recovery verification under different failure conditions.
-- Evaluation with larger multi-process sensor pipelines.
-
----
-
 ## 📄 Patent Publication
 
 This work is associated with a published Indian patent application.
@@ -375,6 +361,5 @@ This work is associated with a published Indian patent application.
 | **Application Number** | 202641126952 A |
 | **Applicant** | Vellore Institute of Technology |
 | **Publication Date** | 30 October 2026 |
-| **Patent Journal** | No. 44/2026 |
 | **Inventors** | Konguvel Elango, Vidhya S., Shashwat Kansal |
 | **Status** | Published Indian Patent Application |
