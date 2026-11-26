@@ -1,0 +1,61 @@
+#include <Arduino.h>
+#include <DHT.h>
+
+#define DHT_PIN 4
+#define DHT_TYPE DHT11
+
+#define PIR_PIN 27
+#define LDR_PIN 34
+
+DHT dht(DHT_PIN, DHT_TYPE);
+
+void setup()
+{
+    Serial.begin(115200);
+
+    pinMode(PIR_PIN, INPUT);
+    pinMode(LDR_PIN, INPUT);
+
+    dht.begin();
+
+    delay(1000);
+
+    Serial.println("POSIX_OTP_ESP32_READY");
+}
+
+void loop()
+{
+    float temperature = dht.readTemperature();
+    float humidity = dht.readHumidity();
+
+    int ldr = analogRead(LDR_PIN);
+    int pir = digitalRead(PIR_PIN);
+
+    /*
+     * If DHT11 reading fails,
+     * send an explicit invalid value.
+     */
+    if (isnan(temperature))
+    {
+        temperature = -999.0;
+    }
+
+    if (isnan(humidity))
+    {
+        humidity = -999.0;
+    }
+
+    /*
+     * Structured sensor frame.
+     */
+    Serial.printf(
+        "TEMP=%.1f,HUM=%.1f,LDR=%d,PIR=%d\n",
+        temperature,
+        humidity,
+        ldr,
+        pir);
+
+    Serial.flush();
+
+    delay(1000);
+}
